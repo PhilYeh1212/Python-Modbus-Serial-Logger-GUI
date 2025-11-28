@@ -44,7 +44,7 @@ You can get the Complete Source Code (main.py) which includes the full GUI imple
 
 It is fully commented and ready to be customized for your own proprietary protocols.
 
-👉 Get the Source Code here: [Download on Gumroad ($29)](https://pokhts.gumroad.com/l/python-modbus-logger) (Includes: main.py, requirements.txt, and Setup Guide)
+👉 Get the Source Code here: [Download on Gumroad ($9.9)](https://pokhts.gumroad.com/l/python-modbus-logger) (Includes: main.py, requirements.txt, and Setup Guide)
 
 📖 Code Sneak Peek (Threading Logic)
 The core logic uses a separate thread to handle the serial loop without freezing the UI:
