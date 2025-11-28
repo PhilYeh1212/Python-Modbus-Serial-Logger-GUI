@@ -13,7 +13,8 @@
 > **Stop writing boilerplate serial code.**
 > This is a production-ready, multi-threaded Serial/Modbus data logger built with Python **Tkinter**. Designed for Automation Engineers to debug RS485/Serial devices without freezing UI.
 
-<img width="744" height="910" alt="demo" src="https://github.com/user-attachments/assets/cb15afc6-4efe-4aba-af0a-1f4eba9c5e49" />
+<img width="634" height="726" alt="螢幕擷取畫面 2025-11-28 093509" src="https://github.com/user-attachments/assets/41f23aea-6cd3-4e54-af8e-fff928988b62" />
+
 
 ---
 
