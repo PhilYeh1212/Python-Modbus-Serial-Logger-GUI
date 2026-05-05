@@ -10,7 +10,7 @@
 > decoding (uint16 / int16 / int32 / float32) with all common byte/word
 > swap options. Demo Mode. CSV logging. No expensive HMI software needed.
 
-![Modbus Logger Pro screenshot](<img width="1280" height="720" alt="modbus_cover" src="https://github.com/user-attachments/assets/148197d1-daf5-40bc-af0f-ed3b91b4add8" />)
+[Modbus Logger Pro screenshot](<img width="1280" height="720" alt="modbus_cover" src="https://github.com/user-attachments/assets/148197d1-daf5-40bc-af0f-ed3b91b4add8" />)
 
 ---
 
