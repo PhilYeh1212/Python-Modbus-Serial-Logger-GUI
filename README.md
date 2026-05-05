@@ -1,72 +1,168 @@
-> **🔥 BLACK FRIDAY SALE:** Get **15% OFF** all source codes with code `BLACKFRIDAY`. [**Click here to apply discount automatically**](https://pokhts.gumroad.com/l/senior-engineer-toolkit?offer_code=BLACKFRIDAY)
+# ⚙️ Modbus Logger Pro — Python Modbus RTU + TCP Client with Smart Decoding
 
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![pymodbus](https://img.shields.io/badge/pymodbus-3.0+-orange.svg)](https://github.com/pymodbus-dev/pymodbus)
+[![Protocol](https://img.shields.io/badge/Protocol-Modbus%20RTU%20%2B%20TCP-cyan.svg)](https://modbus.org/)
+[![License](https://img.shields.io/badge/License-MIT--like-lightgrey.svg)](#-license)
 
+> **Read any PLC, VFD, energy meter, or sensor with a clean Python GUI.**
+> Modbus RTU (RS-485) **and** Modbus TCP in one tool. Smart register
+> decoding (uint16 / int16 / int32 / float32) with all common byte/word
+> swap options. Demo Mode. CSV logging. No expensive HMI software needed.
 
-
-
-# 🐍 Python Modbus Data Logger (Pro GUI Version)
-
-[![Python](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-Commercial-green.svg)]()
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)]()
-
-> **Stop writing boilerplate serial code.**
-> This is a production-ready, multi-threaded Serial/Modbus data logger built with Python **Tkinter**. Designed for Automation Engineers to debug RS485/Serial devices without freezing UI.
-
-<img width="634" height="726" alt="螢幕擷取畫面 2025-11-28 093509" src="https://github.com/user-attachments/assets/41f23aea-6cd3-4e54-af8e-fff928988b62" />
-
+![Modbus Logger Pro screenshot](https://pokhts.gumroad.com)
 
 ---
 
-## 🚀 Why this tool? (V2.0 Updates)
-I built this tool because most free scripts lack stability. This V2.0 release includes features requested by senior engineers:
+## 🎯 Why this exists
 
-* **✅ Adjustable Baud Rate:** Support for 9600, 19200, 38400, 57600, 115200 bps.
-* **✅ Raw Hex Logging:** Records the raw byte response (RX) alongside parsed values. Essential for debugging unknown protocols.
-* **✅ Auto-Timestamped Files:** Automatically generates unique CSV files (e.g., `datalog_20231102.csv`) to prevent data overwriting.
-* **✅ Smart Hex Input:** Accurately parses commands with or without spaces (e.g., `01 03` or `0103`).
+Free Modbus tools either:
+1. Are **command-line only** (no GUI for non-developers)
+2. Don't support **both RTU and TCP** (most PLCs need both)
+3. Don't decode **float32 with byte-swap** (the trap that breaks Schneider /
+   Siemens reads)
+
+Paid tools like **Modbus Poll ($129)** or **CAS Modbus Scanner** are
+Windows-only and not extensible. This project is a clean middle ground:
+GUI-friendly, both transports, real decoding, and you can modify it.
 
 ---
 
-## ✨ Core Features
-* **GUI Interface:** Built with `tkinter` (Standard Library), no heavy Qt/Electron dependencies.
-* **Non-Blocking:** Uses `threading` to keep the UI responsive while polling data at high speeds.
-* **Auto CRC-16:** Automatically calculates and appends Modbus RTU CRC (Little-Endian).
-* **Cross-Platform:** Works natively on Windows, Linux, and macOS.
+## 📂 Open Source vs Pro
 
-## 🛠️ Dependencies
-Only one external library is required:
+This repo contains the **Community Edition** — a working Modbus RTU
+logger, free for personal and educational use.
+
+The **[Modbus Logger Pro](https://pokhts.gumroad.com)** version on Gumroad
+adds the production features I built for real plant-floor work:
+
+| Feature | Community (this repo) | **[Pro Edition ($49)](https://pokhts.gumroad.com)** |
+|---|:---:|:---:|
+| Modbus RTU (RS-485 serial) | ✅ | ✅ |
+| **Modbus TCP** (Ethernet PLCs) | ❌ | ✅ |
+| Multi-threaded GUI (no freezing) | ✅ | ✅ |
+| Read holding / input registers | ✅ Basic | ✅ All 4 function codes |
+| **Register decoding** (uint16 / int16 / int32 / float32) | ❌ | ✅ All 8 formats |
+| **Byte-swap / word-swap options** (Schneider / Siemens trap) | ❌ | ✅ |
+| **Modbus exception decoder** (all 9 standard codes) | ❌ | ✅ |
+| **CRC validation** on responses | ⚠️ Send only | ✅ Both directions |
+| **Demo Mode** with simulated registers | ❌ | ✅ |
+| **CSV recording** with timestamps | ❌ | ✅ |
+| **Dark industrial UI theme** | ❌ | ✅ |
+| **Commercial license** | ❌ | ✅ |
+| **Email support** | ❌ | ✅ |
+
+### 👉 [Get Modbus Logger Pro on Gumroad — $49](https://pokhts.gumroad.com)
+
+Or save $47 with the **[Industrial Python Toolkit Bundle](https://pokhts.gumroad.com)**
+($129) — includes Modbus + J1939 + MQTT + EtherNet/IP.
+
+---
+
+## 🚀 Quick Start (Community Edition)
+
 ```bash
-pip install pyserial
+# Clone
+git clone https://github.com/PhilYeh1212/Python-Modbus-Serial-Logger-GUI
+cd Python-Modbus-Serial-Logger-GUI
+
+# Install
+pip install pymodbus pyserial
+
+# Run
+python main.py
 ```
 
-📥 Download Full Source Code
-You can get the Complete Source Code (main.py) which includes the full GUI implementation, threading logic, and CRC algorithms.
+In the GUI, configure the serial port (e.g. `COM3` on Windows, `/dev/ttyUSB0`
+on Linux), baud rate, slave address, and register range. Hit **Read** and
+the values will appear in the live table.
 
-It is fully commented and ready to be customized for your own proprietary protocols.
+---
 
-👉 Get the Source Code here: [Download on Gumroad ($9.9)](https://pokhts.gumroad.com/l/python-modbus-logger) (Includes: main.py, requirements.txt, and Setup Guide)
+## 🔧 Hardware Compatibility
 
-📖 Code Sneak Peek (Threading Logic)
-The core logic uses a separate thread to handle the serial loop without freezing the UI:
+Tested with:
+
+- **Allen-Bradley** MicroLogix, CompactLogix (via RS-485 modules)
+- **Siemens** S7-1200, S7-1500 (via Modbus TCP module)
+- **Schneider** Modicon M221, M241
+- **Mitsubishi** FX series
+- **Delta** DVP series
+- **Energy meters** (Schneider PM5xxx, Eaton, Acuvim)
+- **VFDs** (ABB ACS series, Schneider Altivar, Siemens MicroMaster)
+- **Soil sensors / weather stations** with RS-485 output
+
+If it speaks Modbus, this tool talks to it.
+
+---
+
+## 📖 The float32 Byte-Swap Trap
+
+A common mistake when reading float32 from Modbus: the standard says nothing
+about byte/word order, so vendors implement it differently. The Pro version
+handles all four common variants:
 
 ```
-Python
-
-# The UI will NEVER freeze because we run this in a separate thread
-def loop(self):
-    while self.is_running:
-        # ... (Serial Read Logic)
-        response = self.ser.read(100)
-        if response:
-            # Log Raw Hex + Parsed Data to CSV
-            writer.writerow([current_time, hex_resp, val1, val2])
-        # ...
+ABCD  — IEEE-754 standard           (most clean implementations)
+CDAB  — Word-swap                   (Schneider, some Siemens)
+BADC  — Byte-swap                   (rare but exists)
+DCBA  — Byte + word swap            (some old PLCs)
 ```
-👨‍💻 About the Author
-Phil Yeh - Senior Automation Engineer
 
-My Gumroad Store (More Engineering Tools)
+Pick the wrong one and you'll read `1.4e-41` instead of `25.5°C`. The Pro
+version provides a dropdown for each register so you can match the device.
 
-Keywords: Python, Modbus RTU, RS485, Serial Communication, Data Logger, Tkinter GUI, Scada, Automation, Source Code, CRC16
+---
 
+## 📚 Related reading
+
+- [**How I Fixed Python's Serial Freezing Issue: A Multi-threaded Tkinter Solution**](https://dev.to/philyeh/how-i-fixed-pythons-serial-freezing-issue-a-multi-threaded-tkinter-solution-2n21)
+  — Dev.to article on the threading model used in this tool
+
+---
+
+## 📥 Get the Pro version
+
+The Community Edition is great for learning Modbus. The
+**[Pro version](https://pokhts.gumroad.com)** is what I use in actual
+client work — production-quality, both RTU and TCP, full decoding,
+commercial license.
+
+| Product | Price | Link |
+|---|---:|---|
+| ⚙️ **Modbus Logger Pro** (this tool, Pro edition) | $49 | [Buy](https://pokhts.gumroad.com) |
+| 🚛 **J1939 Sniffer Pro** | $59 | [Buy](https://pokhts.gumroad.com) |
+| 📡 **MQTT Logger Pro** | $39 | [Buy](https://pokhts.gumroad.com) |
+| 🏭 **EtherNet/IP Study Kit** | $29 | [Buy](https://pokhts.gumroad.com) |
+| 🔒 **Private ChatGPT Stack** | $59 | [Buy](https://pokhts.gumroad.com) |
+| 📦 **Industrial Python Toolkit Bundle** (4 tools, save $47) | **$129** | [Buy](https://pokhts.gumroad.com) |
+| 📊 **CSV Dashboard** (free companion to visualize your logs) | $0 | [Download](https://pokhts.gumroad.com) |
+
+---
+
+## 📫 About
+
+**Phil Yeh** — Senior Automation Engineer based in Taiwan. I build Python
+tools for industrial protocol work.
+
+- 🛒 **Store:** [pokhts.gumroad.com](https://pokhts.gumroad.com)
+- ✍️ **Blog:** [dev.to/philyeh](https://dev.to/philyeh)
+- 💼 **LinkedIn:** [linkedin.com/in/phil-yeh-204144297](https://www.linkedin.com/in/phil-yeh-204144297/)
+
+---
+
+## 📝 License
+
+The Community Edition in this repository is free for personal and
+educational use. For commercial use (client projects, internal company
+tools, products you sell), please get the **[Pro Edition](https://pokhts.gumroad.com)**
+which includes a proper commercial license.
+
+If this tool helped you, **a ⭐ on the repo** means a lot to an indie
+developer. Thanks!
+
+---
+
+<sub>**Keywords:** Python, Modbus RTU, Modbus TCP, RS-485, PLC, SCADA,
+VFD, energy meter, holding register, pymodbus, GUI, Tkinter, automation,
+Schneider, Siemens, Allen-Bradley, float32 word-swap</sub>
