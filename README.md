@@ -10,7 +10,9 @@
 > decoding (uint16 / int16 / int32 / float32) with all common byte/word
 > swap options. Demo Mode. CSV logging. No expensive HMI software needed.
 
-[Modbus Logger Pro screenshot](<img width="1280" height="720" alt="modbus_cover" src="https://github.com/user-attachments/assets/148197d1-daf5-40bc-af0f-ed3b91b4add8" />)
+![Modbus Logger Pro screenshot](https://pokhts.gumroad.com)
+<img width="1280" height="720" alt="modbus_cover" src="https://github.com/user-attachments/assets/50f00e1b-bb1f-4e9f-be1c-8490041cb282" />
+
 
 ---
 
@@ -166,3 +168,4 @@ developer. Thanks!
 <sub>**Keywords:** Python, Modbus RTU, Modbus TCP, RS-485, PLC, SCADA,
 VFD, energy meter, holding register, pymodbus, GUI, Tkinter, automation,
 Schneider, Siemens, Allen-Bradley, float32 word-swap</sub>
+<img width="1280" height="720" alt="modbus_cover" src="https://github.com/user-attachments/assets/2db2bc45-642d-42e4-a9b8-d2f99ddab568" />
